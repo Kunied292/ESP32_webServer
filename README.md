@@ -172,10 +172,18 @@ This relay module references its control signal against 5 V. The ESP32's 3.3 V H
 - If the ESP32 reboots when the relay switches, your USB supply is too weak — power the relay side from a separate 5 V adapter with grounds tied together.
 - Never drive LEDs without series resistors — excess current can destroy GPIO pins.
 
+## Schematic (KiCad)
+
+The circuit schematic lives in [`hardware/`](hardware/). Open `hardware/ESP32_webServer.kicad_pro`
+in KiCad 7 or newer. All symbols are embedded in the `.kicad_sch` file, so no extra libraries are
+needed. Resistor footprints are assigned; assign the rest when laying out a PCB (note the RGB LED
+is a single 4-pin common-cathode package and the relay is an off-board module).
+
 ## Project structure
 
 ```
 ESP32_webServer/
+├── hardware/             # KiCad project + schematic (.kicad_pro / .kicad_sch)
 ├── src/
 │   ├── main.cpp          # Firmware: Wi-Fi, web server, LED/relay/RGB logic
 │   └── assets/           # Photos/screenshots used by this README
